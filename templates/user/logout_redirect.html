@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block body %}
+    <p>{% translate "Þú hefur verið skráð/ur út." %}</p>
+    {% if '/logout/' not in request.META.HTTP_REFERER %}
+    <p>
+        {% translate 'Þú verður færð/ur eftir augnablik' %}
+    </p>
+    {% endif %}
+{% endblock %}
+
+{% block extra_body %}
+    {% if '/logout/' not in request.META.HTTP_REFERER %}
+        <script type="text/javascript">
+        document.location.href = '{{ request.META.HTTP_REFERER }}';
+        </script>
+    {% endif %}
+{% endblock %}
