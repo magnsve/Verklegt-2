@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1 class="red">Vöru úrvalið</h1>
+    <div class="input-group">
+        <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
+        <div class="input-group-btn">
+            <button type="button" id="search-btn" class="btn btn-default">Leita</button>
+        </div>
+    </div>
     <div class="products">
         {% for product in products %}
             {% include 'products/single_product.html' with product=product %}
