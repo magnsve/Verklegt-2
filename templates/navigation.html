@@ -16,9 +16,9 @@
       <ul class="nav navbar-nav">
         <li><a href="{% url 'product-index' %}">Verslun<span class="sr-only">(current)</span></a></li>
         <li><a href="{% url 'user-index' %}">Notendur<span class="sr-only">(current)</span></a></li>
-        <li><a href="{% url 'update_profile' %}">Ofurnotendur<span class="sr-only">(current)</span></a></li>
         <li><a href="{% url 'cart-index' %}">Karfan mín<span class="sr-only">(current)</span></a></li>
         {% if user.is_authenticated %}
+            <li><a href="{% url 'administrate-index' %}">Ofurnotendur<span class="sr-only">(current)</span></a></li>
             <li><a href="{% url 'profile' %}">Mín síða</a></li>
             <li><a href="{% url 'logout' %}">Skrá mig út</a></li>
         {% else %}

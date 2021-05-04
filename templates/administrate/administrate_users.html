@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="profiles">
+    <h1 class="red">Notenda listi</h1>
+    {% for profile in profiles %}
+        {% include 'administrate/single_profile.html' with profile=profile %}
+    {% endfor %}
+</div>
+{% endblock %}

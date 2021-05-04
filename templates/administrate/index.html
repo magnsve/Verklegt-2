@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Þetta er placeholder.</h1>
+    <a href="{% url 'administrate_users' user.id %}" class="well administrate">Notenda umsýsla</a>
+    <a href="{% url 'administrate_products' %}" class="well administrate">Vöru umsýsla</a>
 {% endblock %}
