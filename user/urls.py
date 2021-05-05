@@ -6,8 +6,6 @@ urlpatterns = [
     path('', views.index, name="user-index"),
     path('register', views.register, name='register'),
     path('login', LoginView.as_view(template_name='user/login.html'), name='login'),
-    path('logout-redirect', views.logout_redirect, name='logout_redirect'),
-    path('logout', LogoutView.as_view(next_page='logout_redirect'), name='logout'),
+    path('logout', LogoutView.as_view(next_page='login'), name='logout'),
     path('profile', views.profile, name='profile'),
-    path('profile/update_profile', views.update_profile, name='update_profile')
 ]
