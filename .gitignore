@@ -158,8 +158,8 @@ Thumbs.db
 
 
 # End of https://www.toptal.com/developers/gitignore/api/django
-.idea/dataSources.local.xml
-.idea/dataSources.xml
+.idea/codestream.xml
+.idea/inspectionProfiles/profiles_settings.xml
 .idea/misc.xml
+.idea/modules.xml
 .idea/Verklegt-2.iml
-.idea/workspace.xml
