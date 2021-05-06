@@ -1,0 +1,43 @@
+
+
+<div class="wrapper">
+	<div class="navbar">
+		<div class="inner_navbar">
+			<div class="logo">
+				<a href="/">Ship O' <span>Cereal</span></a>
+			</div>
+			<div class="menu">
+				<ul>
+					<li><a href="product-index" class="active">Verslun</a></li>
+					<li><a href="user-index">Notendur</a></li>
+					<li><a href="cart-index">Karfan mín</a></li>
+
+                    {% if user.is_authenticated %}
+
+                    <li><a href='administrate-index'>Ofurnotendur</a></li>
+					<li><a href="profile">Mín síða</a></li>
+                    <li><a href="logout">Skrá mig út</a></li>
+
+                    else %}
+
+                    <li><a href="login">Skrá mig inn</a></li>
+                    <li><a href="register">Búa til aðgang</a></li>
+                    {% endif %}
+				</ul>
+			</div>
+		</div>
+		<div class="hamburger">
+			<i class="fas fa-bars"></i>
+		</div>
+	</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>

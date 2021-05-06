@@ -4,11 +4,13 @@ from ship_o_cereal.decorators import admin_required
 from user.forms.profile_form import ProfileUpdateForm
 from user.models import Profile
 
-
+@login_required
+@admin_required
 def index(request):
     return render(request, 'administrate/index.html')
 
-
+@login_required
+@admin_required
 def administrate_products(request):
     return render(request, 'administrate/administrate_products.html')
 
