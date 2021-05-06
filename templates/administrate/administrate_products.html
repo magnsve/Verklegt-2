@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<div class="products">
+    <h1 class="red">Vöru listi</h1>
+    {% for product in products|dictsort:'product.name' %}
+        {% include 'administrate/single_product.html' with product=product %}
+    {% endfor %}
+</div>
 {% endblock %}

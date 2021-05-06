@@ -2,7 +2,7 @@
 {% block content %}
 <div class="profiles">
     <h1 class="red">Notenda listi</h1>
-    {% for profile in profiles %}
+    {% for profile in profiles|dictsort:'user.username' %}
         {% include 'administrate/single_profile.html' with profile=profile %}
     {% endfor %}
 </div>

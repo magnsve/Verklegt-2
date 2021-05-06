@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="products">
-        {% for product in products %}
+        {% for product in products|dictsort:'name' %}
             {% include 'products/single_product.html' with product=product %}
         {% endfor %}
     </div>

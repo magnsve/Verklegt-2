@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from products.forms.product_form import ProductCreateForm, ProdcutCategoryCreateForm, ProductManufacturerCreateForm, \
     ProductUpdateForm
 from products.models import Product, ProductImage
+from ship_o_cereal.decorators import admin_required
 
 
 def index(request):
@@ -27,6 +28,7 @@ def get_product_by_id(request, id):
 
 
 @login_required
+@admin_required
 def create_product(request):
     if request.method == 'POST':
         form = ProductCreateForm(data=request.POST)
@@ -43,6 +45,7 @@ def create_product(request):
 
 
 @login_required
+@admin_required
 def create_category(request):
     if request.method == 'POST':
         form = ProdcutCategoryCreateForm(data=request.POST)
@@ -57,6 +60,7 @@ def create_category(request):
 
 
 @login_required
+@admin_required
 def create_manufacturer(request):
     if request.method == 'POST':
         form = ProductManufacturerCreateForm(data=request.POST)
@@ -71,6 +75,7 @@ def create_manufacturer(request):
 
 
 @login_required
+@admin_required
 def delete_product(request, id):
     product = get_object_or_404(Product, pk=id)
     product.delete()
@@ -78,6 +83,7 @@ def delete_product(request, id):
 
 
 @login_required
+@admin_required
 def update_product(request, id):
     instance = get_object_or_404(Product, pk=id)
     if request.method == 'POST':
