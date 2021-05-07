@@ -51,7 +51,7 @@ def create_category(request):
         form = ProdcutCategoryCreateForm(data=request.POST)
         if form.is_valid():
             category = form.save()
-            return redirect('product-index')
+            return redirect('products_categories')
     else:
         form = ProdcutCategoryCreateForm()
     return render(request, 'products/create_category.html', {
@@ -66,7 +66,7 @@ def create_manufacturer(request):
         form = ProductManufacturerCreateForm(data=request.POST)
         if form.is_valid():
             manufacturer = form.save()
-            return redirect('product-index')
+            return redirect('products_manufacturers')
     else:
         form = ProductManufacturerCreateForm()
     return render(request, 'products/create_manufacturer.html', {
@@ -82,18 +82,5 @@ def delete_product(request, id):
     return redirect('product-index')
 
 
-@login_required
-@admin_required
-def update_product(request, id):
-    instance = get_object_or_404(Product, pk=id)
-    if request.method == 'POST':
-        form = ProductUpdateForm(data=request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect('product_details', id=id)
-    else:
-        form = ProductUpdateForm(instance=instance)
-    return render(request, 'products/update_product.html', {
-        'form': form,
-        'id': id
-    })
+
+

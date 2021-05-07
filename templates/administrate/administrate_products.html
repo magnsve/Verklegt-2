@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'administrate/index.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'administrate_products' %}">Vöru umsýsla</a>
+{% endblock %}
 {% block content %}
-<div class="products">
-    <h1 class="red">Vöru listi</h1>
-    {% for product in products|dictsort:'product.name' %}
-        {% include 'administrate/single_product.html' with product=product %}
-    {% endfor %}
-</div>
+    <a href="{% url 'products_products' %}" class="well administrate">Vörur</a>
+    <a href="{% url 'products_manufacturers' %}" class="well administrate">Framleiðendur</a>
+    <a href="{% url 'products_categories' %}" class="well administrate">Vöruflokkar</a>
 {% endblock %}

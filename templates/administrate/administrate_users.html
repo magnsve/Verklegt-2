@@ -1,4 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'administrate/index.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'administrate_users' %}">Notenda umsýsla</a>
+{% endblock %}
 {% block content %}
 <div class="profiles">
     <h1 class="red">Notenda listi</h1>
