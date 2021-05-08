@@ -1,3 +1,4 @@
+from datetime import date
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -5,6 +6,7 @@ from products.forms.product_form import ProductCreateForm, ProdcutCategoryCreate
     ProductUpdateForm
 from products.models import Product, ProductImage
 from ship_o_cereal.decorators import admin_required
+from user.models import SearchHistory
 
 
 def index(request):
@@ -16,6 +18,7 @@ def index(request):
             'description': x.description,
             'firstImage': x.productimage_set.first().image
         } for x in Product.objects.filter(name__icontains=search_filter)]
+        search_history = SearchHistory.objects.create(profile=request.user.profile, search_string=search_filter)
         return JsonResponse({ 'data': products })
     context = {'products': Product.objects.all().order_by('name')}
     return render(request, 'products/index.html', context)
