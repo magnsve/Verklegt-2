@@ -36,13 +36,6 @@ def profile(request):
             profile.user = request.user
             profile.save()
             return redirect('profile')
-    today = date.today()
-    yesterday = today - timedelta(1)
-    lastweek = today - timedelta(7)
     return render(request, 'user/profile.html', {
         'form': ProfileForm(instance=profile),
-        'today': SearchHistory.objects.filter(profile=request.user.profile, timestamp=today).order_by('timestamp'),
-        'yesterday': SearchHistory.objects.filter(profile=request.user.profile, timestamp=yesterday).order_by('timestamp'),
-        'lastweek': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=yesterday, timestamp__gte=lastweek).order_by('timestamp'),
-        'older': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=lastweek).order_by('timestamp')
     })

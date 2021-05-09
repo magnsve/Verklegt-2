@@ -10,6 +10,7 @@
             <button type="button" id="search-btn" class="btn btn-default">Leita</button>
         </div>
     </div>
+    {% include 'user/search_history.html' %}
     <div class="products">
         {% for product in products|dictsort:'name' %}
             {% include 'products/single_product.html' with product=product %}

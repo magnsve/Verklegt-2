@@ -1,27 +1,38 @@
-<div class="testclass">
-    <h1>Leitarsaga</h1>
-    {% if today|length > 0 %}
-        <h4>Í dag</h4>
-        {% for search in today %}
-            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
-        {% endfor %}
-    {% endif %}
-    {% if yesterday|length > 0 %}
-        <h4>Í gær</h4>
-        {% for search in yesterday %}
-            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
-        {% endfor %}
-    {% endif %}
-    {% if lastweek|length > 0 %}
-        <h4>Síðasta vika</h4>
-        {% for search in lastweek %}
-            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
-        {% endfor %}
-    {% endif %}
-    {% if older|length > 0 %}
-        <h4>Eldra</h4>
-        {% for search in older %}
-            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
-        {% endfor %}
-    {% endif %}
+<div>
+    <form action="search_history.html">
+        <label for="search-history">Leitarsaga</label>
+        <select name="search-history" id="search-hist" onchange="search_hist()">
+            {% if today|length > 0 %}
+                <optgroup label="Í dag">
+                {% for search in today %}
+                    <option value="{{ search.search_string }}">{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</option>
+                {% endfor %}
+                </optgroup>
+            {% endif %}
+            {% if yesterday|length > 0 %}
+                <optgroup label="Í gær">
+                {% for search in yesterday %}
+                    <option value="{{ search.search_string }}">{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</option>
+                {% endfor %}
+                </optgroup>
+            {% endif %}
+            {% if lastweek|length > 0 %}
+                <optgroup label="Síðasta vika">
+                {% for search in lastweek %}
+                    <option value="{{ search.search_string }}">{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</option>
+                {% endfor %}
+                </optgroup>
+            {% endif %}
+            {% if older|length > 0 %}
+                <optgroup label="Eldra">
+                {% for search in older %}
+                    <option value="{{ search.search_string }}">{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</option>
+                {% endfor %}
+                </optgroup>
+            {% endif %}
+        </select>
+        <div class="input-group-btn">
+            <button type="button" id="search-hist-btn" class="btn btn-default">Leita</button>
+        </div>
+    </form>
 </div>

@@ -1,3 +1,4 @@
+from datetime import timedelta, date
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -22,7 +23,15 @@ def index(request):
             except:
                 pass
         return JsonResponse({ 'data': products })
-    context = {'products': Product.objects.all().order_by('name')}
+    today = date.today()
+    yesterday = today - timedelta(1)
+    lastweek = today - timedelta(7)
+    context = {'products': Product.objects.all().order_by('name'),
+               'today': SearchHistory.objects.filter(profile=request.user.profile, timestamp=today).order_by('-timestamp'),
+               'yesterday': SearchHistory.objects.filter(profile=request.user.profile, timestamp=yesterday).order_by('-timestamp'),
+               'lastweek': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=yesterday, timestamp__gte=lastweek).order_by('-timestamp'),
+               'older': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=lastweek).order_by('-timestamp')
+               }
     return render(request, 'products/index.html', context)
 
 
