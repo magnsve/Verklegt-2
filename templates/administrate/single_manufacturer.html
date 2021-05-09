@@ -1,0 +1,6 @@
+<div class="well product">
+    <img class="product-image" src="{{ manufacturer.logo }}"/>
+    <h4>{{ manufacturer.name }}</h4>
+    <a href="{% url 'update_manufacturer' manufacturer.id %}">Uppfæra framleiðanda</a>
+    <a href="{% url 'delete_manufacturer' manufacturer.id %}" onclick="return confirm('Ertu viss um að þú viljir eyða framleiðandanum?')">Eyða framleiðanda</a>
+</div>

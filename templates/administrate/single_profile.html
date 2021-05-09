@@ -1,11 +1,14 @@
 <div class="well profile">
     <img class="profile-image" src="{{ profile.profile_image }}"/>
     <h4>Notendanafn: {{ profile.user.username }}</h4>
+    <p>Profile id: {{ profile.id }}</p>
+    <p>User id: {{ profile.user.id }}</p>
     <p>Lýsing: {{ profile.bio }}</p>
-    {% if profile.admin %}
-        <p>Er með admin réttindi.</p>
-    {% else %}
-        <p>Er ekki með admin réttindi.</p>
-    {% endif %}
-    <a href="{% url 'update_profile' profile.id %}">Uppfæra notanda</a>
+        <a href="{% url 'toggle_admin' profile.id %}">
+            {% if profile.admin %}
+                Fjarlægja admin réttindi
+            {% else %}
+                Bæta við admin réttindum
+            {% endif %}
+        </a>
 </div>
