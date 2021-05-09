@@ -37,13 +37,18 @@ def index(request):
         product_set = Product.objects.filter(category=filter_by).order_by(sort_by)
     else:
         product_set = Product.objects.all().order_by(sort_by)
-    context = {'products': product_set,
-               'today': SearchHistory.objects.filter(profile=request.user.profile, timestamp=today).order_by('-timestamp'),
-               'yesterday': SearchHistory.objects.filter(profile=request.user.profile, timestamp=yesterday).order_by('-timestamp'),
-               'lastweek': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=yesterday, timestamp__gte=lastweek).order_by('-timestamp'),
-               'older': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=lastweek).order_by('-timestamp'),
-               'categories': categories
-               }
+    if request.user.is_authenticated:
+        context = {'products': product_set,
+                   'today': SearchHistory.objects.filter(profile=request.user.profile, timestamp=today).order_by('-timestamp'),
+                   'yesterday': SearchHistory.objects.filter(profile=request.user.profile, timestamp=yesterday).order_by('-timestamp'),
+                   'lastweek': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=yesterday, timestamp__gte=lastweek).order_by('-timestamp'),
+                   'older': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=lastweek).order_by('-timestamp'),
+                   'categories': categories
+                   }
+    else:
+        context = {'products': product_set,
+                   'categories': categories
+                   }
     return render(request, 'products/index.html', context)
 
 
