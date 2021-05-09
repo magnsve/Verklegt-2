@@ -1,7 +1,7 @@
 {% extends 'administrate/all_products.html' %}
 {% block breadcrumbs %}
     {{ block.super }} &raquo;
-    <a href="{% url 'update_product' id %}">Vara #{{ id }}</a>
+    <a href="{% url 'update_product' id %}">Uppfæra vöru</a>
 {% endblock %}
 {% block content %}
     <form class="form form-horizontal" action="{% url 'update_product' id %}" method="post">

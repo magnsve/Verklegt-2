@@ -1,0 +1,27 @@
+<div class="testclass">
+    <h1>Leitarsaga</h1>
+    {% if today|length > 0 %}
+        <h4>Í dag</h4>
+        {% for search in today %}
+            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
+        {% endfor %}
+    {% endif %}
+    {% if yesterday|length > 0 %}
+        <h4>Í gær</h4>
+        {% for search in yesterday %}
+            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
+        {% endfor %}
+    {% endif %}
+    {% if lastweek|length > 0 %}
+        <h4>Síðasta vika</h4>
+        {% for search in lastweek %}
+            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
+        {% endfor %}
+    {% endif %}
+    {% if older|length > 0 %}
+        <h4>Eldra</h4>
+        {% for search in older %}
+            <ul>{{ search.timestamp|date:"d.m Y" }} - {{ search.search_string }}</ul>
+        {% endfor %}
+    {% endif %}
+</div>

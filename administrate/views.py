@@ -109,7 +109,7 @@ def update_product(request, id):
             return redirect('products_products')
     else:
         form = ProductUpdateForm(instance=instance)
-    return render(request, 'products/../templates/administrate/update_product.html', {
+    return render(request, 'administrate/update_product.html', {
         'form': form,
         'id': id
     })
