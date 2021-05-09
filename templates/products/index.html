@@ -25,7 +25,9 @@
             <button type="button" id="search-btn" class="btn btn-default">Leita</button>
         </div>
     </div>
-    {% include 'user/search_history.html' %}
+    {% if user.is_authenticated %}
+        {% include 'user/search_history.html' %}
+    {% endif %}
     <div class="products">
         {% for product in products %}
             {% include 'products/single_product.html' with product=product %}
