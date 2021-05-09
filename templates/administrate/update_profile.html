@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-    <form class="form form-horizontal" action="{% url 'update_profile' id %}" method="post">
-        {% csrf_token %}
-        <p class="form form-horizonta">Notandi: {{ form.name }}</p>
-        {{ form }}
-    <input type="submit" value="Vista" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0"/>
-    </form>
-{% endblock %}

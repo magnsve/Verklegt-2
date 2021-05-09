@@ -1,10 +1,11 @@
+from datetime import date, timedelta
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from ship_o_cereal.decorators import admin_required
 from user.forms.profile_form import ProfileForm, ProfileUpdateForm
-from user.models import Profile
+from user.models import Profile, SearchHistory
 
 
 def index(request):
@@ -36,5 +37,5 @@ def profile(request):
             profile.save()
             return redirect('profile')
     return render(request, 'user/profile.html', {
-        'form': ProfileForm(instance=profile)
+        'form': ProfileForm(instance=profile),
     })

@@ -49,3 +49,22 @@ class ProductUpdateForm(ModelForm):
             'manufacturer': widgets.Select(attrs={'class': 'form-control'}),
             'on_sale': widgets.CheckboxInput(attrs={'class': 'checkbox'})
         }
+
+
+class ProductManufacturerUpdateForm(ModelForm):
+    class Meta:
+        model = ProductManufacturer
+        exclude = [ 'id' ]
+        widgets = {
+            'name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'logo': widgets.TextInput(attrs={'class': 'form-control'})
+        }
+
+
+class ProductCategoryUpdateForm(ModelForm):
+    class Meta:
+        model = ProductCategory
+        exclude = [ 'id' ]
+        widgets = {
+            'name': widgets.TextInput(attrs={'class': 'form-control'}),
+        }

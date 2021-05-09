@@ -16,7 +16,7 @@ class ProfileForm(ModelForm):
 class ProfileUpdateForm(ModelForm):
     class Meta:
         model = Profile
-        exclude = ['id', 'user', 'bio', 'profile_image']
+        exclude = ['id', 'profile_image', 'user', 'bio']
         widgets = {
             'admin': widgets.CheckboxInput(attrs={'class': 'checkbox'})
         }
