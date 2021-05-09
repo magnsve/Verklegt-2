@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
     <h1>{{ product.name}}</h1>
+    <p>Flokkur: {{ product.category }}</p>
     <p>{{ product.description }}</p>
     <p>{{ product.price }} kr.</p>
     <p>Framleiðandi: {{ product.manufacturer.name }}</p>

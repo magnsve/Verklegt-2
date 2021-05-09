@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from products.forms.product_form import ProductCreateForm, ProdcutCategoryCreateForm, ProductManufacturerCreateForm
-from products.models import Product, ProductImage
+from products.models import Product, ProductImage, ProductCategory
 from ship_o_cereal.decorators import admin_required
 from user.models import SearchHistory
 
@@ -26,11 +26,23 @@ def index(request):
     today = date.today()
     yesterday = today - timedelta(1)
     lastweek = today - timedelta(7)
-    context = {'products': Product.objects.all().order_by('name'),
+    sort_by = request.GET.get('sort', 'name')
+    if sort_by not in ['name', '-name', 'category', '-category', 'price', '-price']:
+        sort_by = 'name'
+    categories = ProductCategory.objects.all().order_by('name')
+    filter_by = request.GET.get('category', 'all')
+    if filter_by == 'all':
+        product_set = Product.objects.all().order_by(sort_by)
+    elif ProductCategory.objects.filter(id=filter_by).exists():
+        product_set = Product.objects.filter(category=filter_by).order_by(sort_by)
+    else:
+        product_set = Product.objects.all().order_by(sort_by)
+    context = {'products': product_set,
                'today': SearchHistory.objects.filter(profile=request.user.profile, timestamp=today).order_by('-timestamp'),
                'yesterday': SearchHistory.objects.filter(profile=request.user.profile, timestamp=yesterday).order_by('-timestamp'),
                'lastweek': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=yesterday, timestamp__gte=lastweek).order_by('-timestamp'),
-               'older': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=lastweek).order_by('-timestamp')
+               'older': SearchHistory.objects.filter(profile=request.user.profile, timestamp__lt=lastweek).order_by('-timestamp'),
+               'categories': categories
                }
     return render(request, 'products/index.html', context)
 
