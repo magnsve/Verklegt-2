@@ -2,9 +2,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    ''' This was here before, maybe still needed
     path('', views.index, name="cart-index"),
-    '''
+    path('contact', views.contact, name="contact"),
+
+]
+
+'''
+
     path('add/<int:id>/', views.cart_add, name='cart_add'),
     path('item_clear/<int:id>/', views.item_clear, name='item_clear'),
     path('item_increment/<int:id>/',
@@ -13,4 +17,4 @@ urlpatterns = [
          views.item_decrement, name='item_decrement'),
     path('cart_clear/', views.cart_clear, name='cart_clear'),
     path('cart-detail/',views.cart_detail,name='cart_detail'),
-]
+    '''

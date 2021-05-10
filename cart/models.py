@@ -1,26 +1,37 @@
 from django.db import models
-from django.conf import settings
 from products.models import Product
-# Create your models here.
+from user.models import Profile
+
+
 class Cart(models.Model):
-    name = models.CharField(max_length=255)
-    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    is_open = models.BooleanField(default=True)
+
+
+class CartItems(models.Model):
+    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.FloatField()
-    manufacturer = models.ForeignKey(ProductManufacturer, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
+    total_price = models.FloatField()
 
 
-class ProductImage(models.Model):
-    image = models.CharField(max_length=9999)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+class Country(models.Model):
+    country = models.CharField(max_length=255)
 
-#Einn klasi sem er cart
-#I honum er ID
-#ProfileID, eða user ID
-#isOpen boolean field
-#Foreignkey í bæði product
-#Quanity field eins og price
-#AddressID eða Address field
-#Tafla fyrir items sem inniheldur cartID
+
+class CartAddress(models.Model):
+    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=255)
+    street_name = models.CharField(max_length=255)
+    house_number = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
+    postal_code = models.CharField(max_length=255)
+
+
+class CartPayment(models.Model):
+    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cardholder_name = models.CharField(max_length=255)
+    card_number = models.FloatField()
+    expiration_date = models.FloatField()
+    cvc = models.FloatField()

@@ -1,50 +1,18 @@
-from django.shortcuts import render
-from products.models import Product
 from django.contrib.auth.decorators import login_required
-from cart.models import Cart
+from django.shortcuts import render, get_object_or_404
+
+from cart.forms.cart_form import CartAddressForm
+from cart.models import Cart, CartAddress
+
 
 def index(request):
     return render(request, 'cart/index.html')
 
-@login_required(login_url="/users/login")
-def cart_add(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.add(product=product)
-    return redirect("home")
 
-
-@login_required(login_url="/users/login")
-def item_clear(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.remove(product)
-    return redirect("cart_detail")
-
-
-@login_required(login_url="/users/login")
-def item_increment(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.add(product=product)
-    return redirect("cart_detail")
-
-
-@login_required(login_url="/users/login")
-def item_decrement(request, id):
-    cart = Cart(request)
-    product = Product.objects.get(id=id)
-    cart.decrement(product=product)
-    return redirect("cart_detail")
-
-
-@login_required(login_url="/users/login")
-def cart_clear(request):
-    cart = Cart(request)
-    cart.clear()
-    return redirect("cart_detail")
-
-
-@login_required(login_url="/users/login")
-def cart_detail(request):
-    return render(request, 'cart/cart_detail.html')
+@login_required
+def contact(request):
+    profile_id = request.user.profile.id
+    cart = Cart.objects.filter(profile_id=profile_id).filter(is_open=True)
+    contact_info = CartAddress.objects.filter(cart_id=cart.id)
+    form = CartAddressForm(data=request.POST)
+    return render(request, 'cart/index.html')
