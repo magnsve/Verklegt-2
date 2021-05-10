@@ -1,0 +1,11 @@
+<div class="well product">
+    <img class="product-image" src="{{ product.productimage_set.first.image }}"/>
+    <h4>Nafn vöru: {{ product.name }}</h4>
+    <p>Lýsing: {{ product.description }}</p>
+    <p>Vöruflokkur: {{ product.category }}</p>
+    <p>Verð: {{ product.price }}</p>
+    <p>Á tilboði: {{ product.on_sale }}</p>
+    <p>Framleiðandi: {{ product.manufacturer }}</p>
+    <a href="{% url 'update_product' product.id %}">Uppfæra vöru</a>
+    <a href="{% url 'delete_product' product.id %}" onclick="return confirm('Ertu viss um að þú viljir eyða vörunni?')">Eyða vöru</a>
+</div>

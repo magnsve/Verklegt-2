@@ -1,0 +1,14 @@
+{% extends 'administrate/administrate_products.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'products_manufacturers' %}">Framleiðendur</a>
+{% endblock %}
+{% block content %}
+    <h1 class="red">Framleiðendur</h1>
+    <p><a href="{% url 'create_manufacturer' %}" class="well administrate">Búa til nýjan framleiðanda</a></p>
+    <div class="manufacturer">
+        {% for manufacturer in manufacturers|dictsort:'name' %}
+            {% include 'administrate/single_manufacturer.html' with manufacturer=manufacturer %}
+        {% endfor %}
+    </div>
+{% endblock %}
