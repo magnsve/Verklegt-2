@@ -1,6 +1,5 @@
 from django.forms import ModelForm, widgets
 from django import forms
-
 from cart.models import CartAddress, CartItems
 
 
@@ -22,7 +21,9 @@ class CartUpdateForm(ModelForm):
         model = CartItems
         exclude = ['id', 'cart_id']
         widgets = {
-            'product' : widgets.TextInput(attrs={'class': 'form-control'}),
-            'quantity' : widgets.TextInput(attrs={'class': 'form-control'}),
-            'total_price' : widgets.TextInput(attrs={'class': 'form-control'}),
+            'product': widgets.TextInput(attrs={'class': 'form-control'}),
+            'quantity': widgets.TextInput(attrs={'class': 'form-control'}),
+            'total_price': widgets.TextInput(attrs={'class': 'form-control'}),
         }
+
+
