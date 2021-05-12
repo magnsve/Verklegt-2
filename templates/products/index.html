@@ -1,6 +1,33 @@
 {% extends 'base.html' %}
+{% block breadcrumbs %}
+    <a href="/">Heim</a>
+{% endblock %}
 {% block content %}
     <h1 class="red">Vöru úrvalið</h1>
+    <div class="well sort-by">
+        <h4 class="red">Raða vörum eftir:</h4>
+        <a class="filter-button" id="alphabetical" href="{% url 'product-index' %}?sort=name">Stafrófsröð</a>
+        <a class="filter-button" id="reverse-alphabeticla" href="{% url 'product-index' %}?sort=-name">Öfugri stafrófsröð</a>
+        <a class="filter-button" id="category" href="{% url 'product-index' %}?sort=category">Vöruflokkum</a>
+        <a class="filter-button" id="price" href="{% url 'product-index' %}?sort=price">Verði - hæsta fyrst</a>
+        <a class="filter-button" id="reverse-price" href="{% url 'product-index' %}?sort=-price">Verði - lægsta fyrst</a>
+    </div>
+    <div class="well filter-by">
+        <h4 class="red">Skoða vörur eftir vöruflokkum:</h4>
+        <a class="filter-button" id="all" href="{% url 'product-index' %}?category=all">Allir vöruflokkar</a>
+        {% for category in categories %}
+            <a class="filter-button" id="{{ category.id }}" href="{% url 'product-index' %}?category={{ category.id }}">{{ category.name}}</a>
+        {% endfor %}
+    </div>
+    <div class="input-group">
+        <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
+        <div class="input-group-btn">
+            <button type="button" id="search-btn" class="btn btn-default">Leita</button>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+        {% include 'user/search_history.html' %}
+    {% endif %}
     <div class="products">
         {% for product in products %}
             {% include 'products/single_product.html' with product=product %}

@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'administrate-index' %}">Starfsmanna aðgangur</a>
+{% endblock %}
 {% block content %}
-    <h1>Placeholder fyrir administrate síðuna.</h1>
+    <a href="{% url 'administrate_users' %}" class="well administrate">Notenda umsýsla</a>
+    <a href="{% url 'administrate_products' %}" class="well administrate">Vöru umsýsla</a>
 {% endblock %}

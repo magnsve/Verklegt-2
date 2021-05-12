@@ -1,0 +1,12 @@
+{% extends 'administrate/administrate_categories.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'update_category' id %}">Uppfæra vöruflokk</a>
+{% endblock %}
+{% block content %}
+    <form class="form form-horizontal" action="{% url 'update_category' id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Vista" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0"/>
+    </form>
+{% endblock %}

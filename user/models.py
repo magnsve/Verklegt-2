@@ -1,14 +1,15 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
-class User(models.Model):
-    name = models.CharField(max_length=255)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=9999)
+    profile_image = models.CharField(max_length=9999)
+    admin = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.name
 
-
-class UserImage(models.Model):
-    image = models.CharField(max_length=9999)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class SearchHistory(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    search_string = models.CharField(max_length=255)
+    timestamp = models.DateField(auto_now=True)
