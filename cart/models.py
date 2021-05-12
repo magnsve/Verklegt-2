@@ -9,8 +9,8 @@ class Cart(models.Model):
 
 
 class CartItems(models.Model):
-    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.FloatField()
     total_price = models.FloatField()
 
@@ -20,17 +20,17 @@ class Country(models.Model):
 
 
 class CartAddress(models.Model):
-    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=255)
     street_name = models.CharField(max_length=255)
     house_number = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     postal_code = models.CharField(max_length=255)
 
 
 class CartPayment(models.Model):
-    cart_id = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
     card_number = models.FloatField()
     expiration_date = models.FloatField()

@@ -4,5 +4,8 @@
 {% endblock %}
 {% block content %}
     <h1 class="well red">Karfan þín</h1>
+    {% for item in cart %}
+        <h4>{{ item.product }}</h4>>
+    {% endfor %}
     <a class="filter-button" href="{% url 'contact' %}">Tengiliða upplýsingar</a>
 {% endblock %}
