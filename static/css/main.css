@@ -3,12 +3,11 @@
 }
 
 .products {
-    color: burlywood;
-    padding-left: 5rem;
     display: flex;
-    background-color: white;
     justify-content: space-around;
-    border: 20px red;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .footer {
@@ -16,7 +15,7 @@
     bottom: 0;
     width: 100%;
     background-color: darkgray;
-    color: deeppink;
+    color: #5bd485;
     text-align: right;
     padding-right: 5rem;
 }
@@ -30,17 +29,40 @@ img.profile-image {
 }
 
 img.product-image {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
 }
 
 .single_product{
-    color: blue;
     text-decoration: none;
 }
 
+.product_box{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    border: 20px;
+    padding: 20px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.product_view{
+    color: pink;
+    display: grid;
+    border: 20px;
+    grid-column-gap: 50px;
+}
+
+.product_view_text{
+    color: black;
+}
+
 .product-name{
-    color:red;
+    color: black;;
+}
+
+.product-description{
+    color: black;
 }
 
 /*Other buttons*/
@@ -121,8 +143,8 @@ img.product-image {
 .container{
     background-color: white;
     width: 100%;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,7 +159,7 @@ img.product-image {
 .categories > div{
     border-color: black;
     padding: 16px;
-    background-color: burlywood;
+    background-color: black;
     margin: 20px;
     font-size: 30px;
     width: 100%;
@@ -148,12 +170,13 @@ img.product-image {
     padding: 75px;
     background-color: burlywood;
     margin: 50px;
-    font-size: 30px;
     display: flex;
     justify-content: space-around;
     width: 100%;
     color: black;
     border-radius: 15px;
+    font-size: 50px;
+    line-height: 78%;
 }
 
 .category-button:hover{
@@ -161,14 +184,9 @@ img.product-image {
 }
 .category-button:nth-child(1) {
     background-color: burlywood;
-    color: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://article.innovadatabase.com/articleimgs/article_images/637393930391956160Quick-breakfast-cereals-676066314_3840x5760.jpeg");
     text-decoration: none;
 }
 
-.category-button:nth-child(1):hover{
-    color: black;
-}
 .category-button:nth-child(2){
     background-color: burlywood;
     text-decoration: none;
@@ -198,18 +216,18 @@ img.product-image {
 
 .dropdown{
     position: relative;
-    display: flex;
+    display: inline-block;
     background-color: white;
     padding: 50px 50px;;
 }
 
 .dropdown-content{
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
 }
 
 .dropdown-content a {
@@ -217,6 +235,7 @@ img.product-image {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+
 }
 
 /* Change color of dropdown links on hover */
