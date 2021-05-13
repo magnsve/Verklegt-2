@@ -1,11 +1,27 @@
-{% extends 'products/index.html' %}
+{% extends 'base.html' %}
 {% block breadcrumbs %}
-    <a href="/">Heim</a>
+    {{ block.super }} &raquo;
+    <a href="index.html">Karfan mín</a>
 {% endblock %}
 {% block content %}
+    {% load l10n %}
     <h1 class="well red">Karfan þín</h1>
-    {% for item in cart %}
-        <h4>{{ item.product }}</h4>>
-    {% endfor %}
-    <a class="filter-button" href="{% url 'contact' %}">Tengiliða upplýsingar</a>
+        <div class="well cart-items">
+            <table class="table">
+                <tr>
+                    <th>Vara</th>
+                    <th>Fjöldi</th>
+                    <th>+ / -</th>
+                    <th>Verð</th>
+                </tr>
+                {% for item in cart|dictsort:'cart.id' %}
+                    <tr>
+                        {% include 'cart/single_cart_item.html' with item=item %}
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="cart-next">
+                <h2>Heildarverð: {{ total|localize }} kr.</h2><a class="cart-next" href="{% url 'contact' %}">Áfram í greiðsluferli</a>
+            </div>
+        </div>
 {% endblock %}
