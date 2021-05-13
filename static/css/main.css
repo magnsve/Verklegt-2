@@ -250,6 +250,10 @@ img.product-image {
   background-color: #3e8e41;
 }
 
-.filter_by_category{
-
+.footer-dark .copyright {
+  text-align:center;
+  padding-top:24px;
+  opacity:0.3;
+  font-size:13px;
+  margin-bottom:0;
 }

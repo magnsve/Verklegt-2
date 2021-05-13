@@ -1,6 +1,6 @@
-from django.forms import ModelForm, widgets
+from django.forms import ModelForm, widgets, inlineformset_factory
+from cart.models import CartAddress, CartItems, Cart
 from django import forms
-from cart.models import CartAddress, CartItems
 
 
 class CartAddressForm(ModelForm):
@@ -16,14 +16,12 @@ class CartAddressForm(ModelForm):
         }
 
 
-class CartUpdateForm(ModelForm):
+class CartItemsUpdateForm(ModelForm):
     class Meta:
         model = CartItems
-        exclude = ['id', 'cart_id']
+        exclude = ('id', 'product')
         widgets = {
-            'product': widgets.TextInput(attrs={'class': 'form-control'}),
-            'quantity': widgets.TextInput(attrs={'class': 'form-control'}),
-            'total_price': widgets.TextInput(attrs={'class': 'form-control'}),
+            'product_name': widgets.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}),
+            'quantity': widgets.NumberInput(attrs={'class': 'form-control'}),
+            'total_price': widgets.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'})
         }
-
-

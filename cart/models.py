@@ -10,8 +10,9 @@ class Cart(models.Model):
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.FloatField()
-    total_price = models.FloatField()
+    product_name = models.CharField(max_length=255, blank=True)
+    quantity = models.DecimalField(max_digits=10, decimal_places=0)
+    total_price = models.DecimalField(max_digits=10, decimal_places=0)
 
 
 class Country(models.Model):
