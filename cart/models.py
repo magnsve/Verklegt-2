@@ -1,5 +1,9 @@
 from django.db import models
 
+from products.models import Product
+from user.models import Profile
+
+
 class Cart(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     is_open = models.BooleanField(default=True)
