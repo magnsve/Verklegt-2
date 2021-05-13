@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from cart.forms.cart_form import CartAddressForm, CartUpdateForm
@@ -36,3 +37,10 @@ def contact(request):
     contact_info = CartAddress.objects.filter(cart_id=cart.id)
     form = CartAddressForm(data=request.POST)
     return render(request, 'cart/index.html')
+=======
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'cart/index.html')
+>>>>>>> e1b9061 (Forsíða)
