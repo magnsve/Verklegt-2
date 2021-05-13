@@ -14,7 +14,7 @@ def index(request):
     context = {'cart': cart_items}
     return render(request, 'cart/index.html', context)
 
-@login_requiredgit
+@login_required
 def add_to_cart(request, id):
     cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()
     if not cart:
