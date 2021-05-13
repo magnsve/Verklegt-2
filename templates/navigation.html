@@ -14,21 +14,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'product-index' %}">Verslun<span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'product-webstore' %}">Verslun<span class="sr-only">(current)</span></a></li>
         <li><a href="{% url 'user-index' %}">Notendur<span class="sr-only">(current)</span></a></li>
         <li><a href="{% url 'cart-index' %}">Karfan mín<span class="sr-only">(current)</span></a></li>
-
-
-      <div class="navbar-header">
-        <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
-        <div class="test">
-            <button type="button" id="search-btn" class="btn btn-default">Leita</button>
-        </div>
-    </div>
-
-
         {% if user.is_authenticated %}
-
             <li><a href="{% url 'administrate-index' %}">Ofurnotendur<span class="sr-only">(current)</span></a></li>
             <li><a href="{% url 'profile' %}">Mín síða</a></li>
             <li><a href="{% url 'logout' %}">Skrá mig út</a></li>
