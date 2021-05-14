@@ -1,12 +1,14 @@
-{% extends 'base.html' %}
+
+{% extends 'products/index1.html' %}
 {% block breadcrumbs %}
     {{ block.super }} &raquo;
     <a href="index.html">Verslun</a>
 {% endblock %}
 {% block content %}
+
     <h1 class="header_product_page">Vöruúrvalið</h1>
         <div class="dropdown">
-            <button class="drop-button">Raða vörum eftir</button>
+            <button class="drop-button">Raða vörum eftir <i class="arrow down"></i></button>
             <div class="dropdown-content">
                 <a class="filter-button" id="alphabetical" href="{% url 'product-webstore' %}?sort=name">Stafrófsröð</a>
                 <a class="filter-button" id="reverse-alphabeticla" href="{% url 'product-webstore' %}?sort=-name">Öfugri stafrófsröð</a>
@@ -15,11 +17,11 @@
                 <a class="filter-button" id="reverse-price" href="{% url 'product-webstore' %}?sort=-price">Verði - lægsta fyrst</a>
             </div>
         </div>
-    <div class="filter_by_category">
-        <h4 class="blue">Skoða vörur eftir vöruflokkum:</h4>
-        <a class="filter-button" id="all" href="{% url 'product-webstore' %}?category=all">Allir vöruflokkar</a>
+    <div class="sidenav">
+        <h4 class="sidenav-title">Skoða vörur eftir vöruflokkum:</h4>
+        <a class="sidenav-content" id="all" href="{% url 'product-webstore' %}?category=all">Allir vöruflokkar</a>
         {% for category in categories %}
-            <a class="filter-button" id="{{ category.id }}" href="{% url 'product-webstore' %}?category={{ category.id }}">{{ category.name}}</a>
+            <a class="sidenav-content2" id="{{ category.id }}" href="{% url 'product-webstore' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
     </div>
     {% if user.is_authenticated %}
