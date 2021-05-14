@@ -49,7 +49,6 @@ def index(request):
     }
     return render(request, 'cart/index.html', context)
 
-
 @login_required
 def add_to_cart(request, id):
     cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()

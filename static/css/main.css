@@ -9,9 +9,15 @@
     list-style: none;
 }
 
-body{
-    background: #f7f7f7;
-    color: #545454;
+.products {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: burlywood;
+    background-color: white;
+    border: 20px red;
 }
 
 .navbar{
