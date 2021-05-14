@@ -6,6 +6,6 @@
     <p>Verð: {{ product.price }}</p>
     <p>Á tilboði: {{ product.on_sale }}</p>
     <p>Framleiðandi: {{ product.manufacturer }}</p>
-    <a href="{% url 'update_product' product.id %}">Uppfæra vöru</a>
-    <a href="{% url 'delete_product' product.id %}" onclick="return confirm('Ertu viss um að þú viljir eyða vörunni?')">Eyða vöru</a>
+    <a class="product_view_button" href="{% url 'update_product' product.id %}">Uppfæra vöru</a>
+    <a class="product_view_button" href="{% url 'delete_product' product.id %}" onclick="return confirm('Ertu viss um að þú viljir eyða vörunni?')">Eyða vöru</a>
 </div>

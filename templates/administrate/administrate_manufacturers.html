@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <div class="well"> <h1 class="red">Framleiðendur</h1></div>
-    <p><a href="{% url 'create_manufacturer' %}" class="well administrate">Búa til nýjan framleiðanda</a></p>
+    <p><a class="product_view_button" href="{% url 'create_manufacturer' %}" class="well administrate">Búa til nýjan framleiðanda</a></p>
     <div class="manufacturer">
         {% for manufacturer in manufacturers|dictsort:'name' %}
             {% include 'administrate/single_manufacturer.html' with manufacturer=manufacturer %}

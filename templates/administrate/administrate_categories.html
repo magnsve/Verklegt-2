@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <div class="well"><h1 class="red">Vöruflokkar</h1></div>
-    <div class="well"><p><a href="{% url 'create_category' %}" class="administrate">Búa til nýjan vöruflokk</a></p></div>
+    <div class="well"><p><a class="product_view_button" href="{% url 'create_category' %}" class="administrate">Búa til nýjan vöruflokk</a></p></div>
     <div class="manufacturer">
         {% for category in categories|dictsort:'name' %}
             {% include 'administrate/single_category.html' with category=category %}
