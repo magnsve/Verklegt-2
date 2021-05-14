@@ -1,17 +1,26 @@
 {% extends 'base.html' %}
-{% block breadcrumbs %}
-    <a href="/">Heim</a>
-{% endblock %}
+    {% block breadcrumbs %}
+        <a href="/">Heim</a>
+    {% endblock %}
 {% block content %}
     <h1 class="header_product_page">Vefverslun</h1>
-    <div class="dropdown">
-        <h4 class="red">Raða vörum eftir: <i class="arrow down"></i></h4>
-        <div class="dropdown-content">
-            <a class="drop-button" id="alphabetical" href="{% url 'product-index' %}?sort=name">Stafrófsröð</a>
-            <a class="drop-button" id="reverse-alphabetical" href="{% url 'product-index' %}?sort=-name">Öfugri stafrófsröð</a>
-            <a class="drop-button" id="category" href="{% url 'product-index' %}?sort=category">Vöruflokkum</a>
-            <a class="drop-button" id="price" href="{% url 'product-index' %}?sort=price">Verði - hæsta fyrst</a>
-            <a class="drop-button" id="reverse-price" href="{% url 'product-index' %}?sort=-price">Verði - lægsta fyrst</a>
+    <div class="top_product_page Row">
+        <div class="Column"></div>
+        <div class="nav-search Column">
+            <span><input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
+            <button type="button" id="search-btn" class="btn btn-default searches">
+                <span class="glyphicon glyphicon-search"></span> Leita
+            </button></span>
+        </div>
+        <div class="dropdown Column" style="width: 300px;">
+            <h4 class="red">Raða vörum eftir: <i class="arrow down"></i></h4>
+            <div class="dropdown-content">
+                <a class="drop-button" id="alphabetical" href="{% url 'product-index' %}?sort=name">Stafrófsröð</a>
+                <a class="drop-button" id="reverse-alphabetical" href="{% url 'product-index' %}?sort=-name">Öfugri stafrófsröð</a>
+                <a class="drop-button" id="category" href="{% url 'product-index' %}?sort=category">Vöruflokkum</a>
+                <a class="drop-button" id="price" href="{% url 'product-index' %}?sort=price">Verði - hæsta fyrst</a>
+                <a class="drop-button" id="reverse-price" href="{% url 'product-index' %}?sort=-price">Verði - lægsta fyrst</a>
+            </div>
         </div>
     </div>
     <div class="sidenav">
@@ -20,12 +29,6 @@
         {% for category in categories %}
             <a class="sidenav-button" id="{{ category.id }}" href="{% url 'product-index' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
-    </div>
-    <div class="nav-search">
-        <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
-        <button type="button" id="search-btn" class="btn btn-default">
-            <span class="glyphicon glyphicon-search"></span> Leita
-        </button>
     </div>
     <div class="products">
         {% for product in products %}
