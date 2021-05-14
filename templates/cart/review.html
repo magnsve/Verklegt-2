@@ -1,0 +1,44 @@
+{% extends 'cart/index.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'contact' %}">Yfirfara og samþykkja</a>
+{% endblock %}
+{% block content %}
+    {% load l10n %}
+    <h1 class="well red">Yfirfara og samþykkja</h1>
+    <table title="Tengiliða upplýsingar" class="table">
+        <tr>
+            <th>Nafn</th>
+            <th>Gata</th>
+            <th>Götunúmer</th>
+            <th>Borg</th>
+            <th>Póstnúmer</th>
+            <th>Land</th>
+        </tr>
+        <tr>
+            <td>{{ contact_step.full_name }}</td>
+            <td>{{ contact_step.street_name }}</td>
+            <td>{{ contact_step.house_number }}</td>
+            <td>{{ contact_step.city }}</td>
+            <td>{{ contact_step.postal_code }}</td>
+            <td>{{ contact_step.country }}</td>
+        </tr>
+        <tr><a class="cart-edit" href="{% url 'contact' %}">Breyta tengiliða upplýsingum</a></tr>
+    </table>
+    <table title="Greiðslu upplýsingar" class="table">
+        <tr>
+            <th>Nafn korthafa</th>
+            <th>Kortanúmer</th>
+            <th>Gildistími</th>
+            <th>CVC</th>
+        </tr>
+        <tr>
+            <td>{{ payment_step.cardholder_name }}</td>
+            <td>{{ payment_step.card_number|stringformat:"d" }}</td>
+            <td>{{ payment_step.expiration_date|stringformat:"04d" }}</td>
+            <td>{{ payment_step.cvc }}</td>
+        </tr>
+        <tr><a class="cart-edit" href="{% url 'payment' %}">Breyta greiðslu upplýsingum</a></tr>
+    </table>
+    <a class="cart-next" href="{% url 'confirmation' %}">Staðfesta</a>
+{% endblock %}

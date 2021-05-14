@@ -22,18 +22,9 @@
             <a class="filter-button" id="{{ category.id }}" href="{% url 'product-webstore' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
     </div>
-
-    <!--<div class="input-group">
-        <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
-        <div class="input-group-btn">
-            <button type="button" id="search-btn" class="btn btn-default">Leita</button>
-        </div>
-    </div>
-    <div class="history_search">
-        {% if user.is_authenticated %}
-            {% include 'user/search_history.html' %}
-        {% endif %}
-    </div>-->
+    {% if user.is_authenticated %}
+        {% include 'user/search_history.html' %}
+    {% endif %}
     <div class="products">
         {% for product in products %}
             {% include 'products/single_product.html' with product=product %}

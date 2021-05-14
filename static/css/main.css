@@ -31,11 +31,13 @@
 }
 
 .navbar .inner_navbar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+
+
 }
 
 .navbar .hamburger{
@@ -43,10 +45,11 @@
 }
 
 .navbar .logo a{
-    font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 3px;
-    color: #fff;
+	justify-content: left;
+	font-weight: 700;
+	font-size: 24px;
+	letter-spacing: 3px;
+	color: #fff;
 }
 
 .navbar .logo a span{
@@ -54,29 +57,55 @@
 }
 
 .navbar .menu ul{
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
+
+
+}
+
+.navbar .menu ul a{
+	display: flex;
+	align-items: baseline;
+
+
 }
 
 .navbar .menu ul .nav-search{
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	display: inline-flex;
+  	flex-wrap: nowrap;
+	width: 40vw;
+  	margin: 0 auto;
+	min-width: auto;
+
+
+
+}
+
+.navbar .menu ul .nav-search button{
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	display: flex;
+  	flex-wrap: nowrap;
 
 }
 
 .navbar .menu ul li a{
-    width: 120px;
-    margin-right: 10px;
-    display: block;
-    text-align: center;
-    padding: 10px;
-    border-radius: 25px;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 2px;
-    transition: all 0.2s ease;
+	width: 120px;
+	margin-right: 10px;
+	display: block;
+	text-align: center;
+	padding: 10px;
+	border-radius: 25px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 14px;
+	letter-spacing: 2px;
+	transition: all 0.2s ease;
+
 }
 
 .navbar .menu ul li:last-child a{
@@ -89,9 +118,9 @@
 }
 
 .main_container{
-    margin-top: 00px;
-    padding: 0px;
-    width: 100%;
+	position: relative;
+  	min-height: 100vh;
+	padding-bottom: 25rem;
 }
 
 .main_container .content{
@@ -214,9 +243,18 @@ img.product-image {
 }
 
 .footer-dark {
-  padding:50px 0;
-  color:#f0f9ff;
-  background-color:#090F1B;
+	padding-top: 50px;
+	padding-bottom: 200px;
+	color:#f0f9ff;
+	background-color:#090F1B;
+	position: absolute;
+  	bottom: 0;
+  	width: 100%;
+  	height: 4.5rem;
+
+
+
+
 }
 
 .footer-dark h3 {

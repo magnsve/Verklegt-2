@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block breadcrumbs %}
     {{ block.super }} &raquo;
-    <a href="index.html">Karfan mín</a>
+    <a href="{% url 'cart-index' %}">Karfan mín</a>
 {% endblock %}
 {% block content %}
     {% load l10n %}
@@ -21,7 +21,10 @@
                 {% endfor %}
             </table>
             <div class="cart-next">
-                <h2>Heildarverð: {{ total|localize }} kr.</h2><a class="cart-next" href="{% url 'contact' %}">Áfram í greiðsluferli</a>
+                <h2>Heildarverð: {{ total|localize }} kr.</h2>
+                {% if cart.all %}
+                    <a class="cart-next" href="{% url 'contact' %}">Áfram í greiðsluferli</a>
+                {% endif %}
             </div>
         </div>
 {% endblock %}

@@ -20,6 +20,9 @@ class CartItems(models.Model):
 class Country(models.Model):
     country = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.country
+
 
 class CartAddress(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
@@ -34,7 +37,6 @@ class CartAddress(models.Model):
 class CartPayment(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
-    card_number = models.FloatField()
-    expiration_date = models.FloatField()
-    cvc = models.FloatField()
-
+    card_number = models.DecimalField(max_digits=16, decimal_places=0)
+    expiration_date = models.DecimalField(max_digits=4, decimal_places=0)
+    cvc = models.DecimalField(max_digits=3, decimal_places=0)

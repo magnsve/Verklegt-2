@@ -1,0 +1,16 @@
+{% extends 'cart/index.html' %}
+{% block breadcrumbs %}
+    {{ block.super }} &raquo;
+    <a href="{% url 'contact' %}">Greiðslu upplýsingar</a>
+{% endblock %}
+{% block content %}
+    {% load l10n %}
+    <h1 class="well red">Greiðslu upplýsingar</h1>
+    <form class="form form-horizontal" action="{% url 'payment' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+    <input type="submit" value="Vista" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0"/>
+    </form>
+    <a class="cart-next" href="{% url 'contact' %}">Aftur í tengiliðaupplýsingar</a>
+    <a class="cart-next" href="{% url 'review' %}">Staðfesta</a>
+{% endblock %}
