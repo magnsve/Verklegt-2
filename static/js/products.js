@@ -7,11 +7,11 @@ $(document).ready(function() {
             type: 'GET',
             success: function (resp) {
                  var newHTML = resp.data.map(d => {
-                     return `<div class="well products">
-                                <a href="/products/${d.id}">
+                     return `<div class="product_box">
+                                <a class="single_product" href="/products/${d.id}">
                                     <img class="product-img" src="${d.firstImage}" />
-                                    <h4>${d.name}</h4>
-                                    <p>${d.description}</p>
+                                    <h4 class="product-name">${d.name}</h4>
+                                    <p class="product-price">${d.price} kr</p>
                                 </a>
                             </div>
                     `

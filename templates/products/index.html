@@ -3,25 +3,24 @@
     <a href="/">Heim</a>
 {% endblock %}
 {% block content %}
-    <h1 class="red">Vöru úrvalið</h1>
-    <div class="well sort-by">
-        <h4 class="red">Raða vörum eftir:</h4>
-        <a class="filter-button" id="alphabetical" href="{% url 'product-index' %}?sort=name">Stafrófsröð</a>
-        <a class="filter-button" id="reverse-alphabeticla" href="{% url 'product-index' %}?sort=-name">Öfugri stafrófsröð</a>
-        <a class="filter-button" id="category" href="{% url 'product-index' %}?sort=category">Vöruflokkum</a>
-        <a class="filter-button" id="price" href="{% url 'product-index' %}?sort=price">Verði - hæsta fyrst</a>
-        <a class="filter-button" id="reverse-price" href="{% url 'product-index' %}?sort=-price">Verði - lægsta fyrst</a>
+    <h1 class="header_product_page">Vefverslun</h1>
+    <div class="dropdown">
+        <h4 class="red">Raða vörum eftir: <i class="arrow down"></i></h4>
+        <div class="dropdown-content">
+            <a class="drop-button" id="alphabetical" href="{% url 'product-index' %}?sort=name">Stafrófsröð</a>
+            <a class="drop-button" id="reverse-alphabetical" href="{% url 'product-index' %}?sort=-name">Öfugri stafrófsröð</a>
+            <a class="drop-button" id="category" href="{% url 'product-index' %}?sort=category">Vöruflokkum</a>
+            <a class="drop-button" id="price" href="{% url 'product-index' %}?sort=price">Verði - hæsta fyrst</a>
+            <a class="drop-button" id="reverse-price" href="{% url 'product-index' %}?sort=-price">Verði - lægsta fyrst</a>
+        </div>
     </div>
-    <div class="well filter-by">
-        <h4 class="red">Skoða vörur eftir vöruflokkum:</h4>
-        <a class="filter-button" id="all" href="{% url 'product-index' %}">Allir vöruflokkar</a>
+    <div class="sidenav">
+        <h4 class="sidenav-title">Vöruflokkar </h4>
+        <a class="sidenav-button" id="all" href="{% url 'product-index' %}">Allir vöruflokkar</a>
         {% for category in categories %}
-            <a class="filter-button" id="{{ category.id }}" href="{% url 'product-index' %}?category={{ category.id }}">{{ category.name}}</a>
+            <a class="sidenav-button" id="{{ category.id }}" href="{% url 'product-index' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
     </div>
-    {% if user.is_authenticated %}
-        {% include 'user/search_history.html' %}
-    {% endif %}
     <div class="nav-search">
         <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
         <button type="button" id="search-btn" class="btn btn-default">
