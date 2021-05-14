@@ -13,20 +13,27 @@
 
 .navbar{
     width: 100%;
-    height: 70px;
+    height: 80px;
     background: #090f1b;
     position: fixed;
     top: 0;
     left: 0;
     padding: 0 25px;
+    align-items: baseline;
+
 }
 
 .navbar .inner_navbar{
 	display: flex;
-	align-items: center;
-	justify-content: flex-start;
+	align-items: baseline;
 	width: 100%;
 	height: 100%;
+    justify-content: space-around;
+
+
+
+
+
 
 
 }
@@ -36,20 +43,29 @@
 }
 
 .navbar .logo a{
-	justify-content: left;
+
 	font-weight: 700;
 	font-size: 24px;
 	letter-spacing: 3px;
 	color: #fff;
+
+
+
 }
 
 .navbar .logo a span{
     color: #5bd485;
+
 }
 
 .navbar .menu ul{
 	display: flex;
 	align-items: center;
+
+
+
+
+
 
 
 }
@@ -59,12 +75,11 @@
 	align-items: baseline;
 
 
+
+
 }
 
 .navbar .menu ul .nav-search{
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
 	display: inline-flex;
   	flex-wrap: nowrap;
 	width: 40vw;
@@ -78,14 +93,13 @@
 .navbar .menu ul .nav-search button{
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
 	display: flex;
   	flex-wrap: nowrap;
 
 }
 
 .navbar .menu ul li a{
-	width: 120px;
+	width: 150px;
 	margin-right: 10px;
 	display: block;
 	text-align: center;
@@ -95,7 +109,10 @@
 	text-transform: uppercase;
 	font-size: 14px;
 	letter-spacing: 2px;
-	transition: all 0.2s ease;
+	transition: all 0.2s ease
+
+
+
 
 }
 
@@ -167,7 +184,7 @@
         padding: 10px;
     }
     .navbar .menu ul li a{
-        width: 100%;
+        width: 1000%;
         padding: 12px;
     }
     .navbar .hamburger{
@@ -211,6 +228,8 @@ img.profile-image {
     border-radius: 50%;
     border: solid 2px rgba(155, 155, 155, .5);
     object-fit: cover;
+    flex-direction: row;
+    padding: 0px;
 
 }
 
