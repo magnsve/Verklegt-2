@@ -5,40 +5,62 @@
 {% endblock %}
 {% block content %}
     {% load l10n %}
-    <h1 class="well red">Yfirfara og samþykkja</h1>
-    <table title="Tengiliða upplýsingar" class="table">
-        <tr>
-            <th>Nafn</th>
-            <th>Gata</th>
-            <th>Götunúmer</th>
-            <th>Borg</th>
-            <th>Póstnúmer</th>
-            <th>Land</th>
-        </tr>
-        <tr>
-            <td>{{ contact_step.full_name }}</td>
-            <td>{{ contact_step.street_name }}</td>
-            <td>{{ contact_step.house_number }}</td>
-            <td>{{ contact_step.city }}</td>
-            <td>{{ contact_step.postal_code }}</td>
-            <td>{{ contact_step.country }}</td>
-        </tr>
-        <tr><a class="cart-edit" href="{% url 'contact' %}">Breyta tengiliða upplýsingum</a></tr>
-    </table>
-    <table title="Greiðslu upplýsingar" class="table">
-        <tr>
-            <th>Nafn korthafa</th>
-            <th>Kortanúmer</th>
-            <th>Gildistími</th>
-            <th>CVC</th>
-        </tr>
-        <tr>
-            <td>{{ payment_step.cardholder_name }}</td>
-            <td>{{ payment_step.card_number|stringformat:"d" }}</td>
-            <td>{{ payment_step.expiration_date|stringformat:"04d" }}</td>
-            <td>{{ payment_step.cvc }}</td>
-        </tr>
-        <tr><a class="cart-edit" href="{% url 'payment' %}">Breyta greiðslu upplýsingum</a></tr>
-    </table>
-    <a class="cart-next" href="{% url 'confirmation' %}">Staðfesta</a>
+    <div>
+        <div class="well">
+            <h1 class="red">Yfirfara og samþykkja</h1>
+        </div>
+        <table class="table">
+            <tr>
+                <th><a class="cart-sidelinks" href="{% url 'product-index' %}">Verslun</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'cart-index' %}">Karfa</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'contact' %}">Tengiliður</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'payment' %}">Greiðsla</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'review' %}">Yfirfara</a></th>
+            </tr>
+        </table>
+        <table title="Tengiliða upplýsingar" class="table well">
+            <tr>
+                <th>Nafn</th>
+                <th>Gata</th>
+                <th>Götunúmer</th>
+                <th>Borg</th>
+                <th>Póstnúmer</th>
+                <th>Land</th>
+            </tr>
+            <tr>
+                <td>{{ contact_step.full_name }}</td>
+                <td>{{ contact_step.street_name }}</td>
+                <td>{{ contact_step.house_number }}</td>
+                <td>{{ contact_step.city }}</td>
+                <td>{{ contact_step.postal_code }}</td>
+                <td>{{ contact_step.country }}</td>
+            </tr>
+            <tr>
+                <th><p>Breyta tengiliða upplýsingum<a class="cart-edit" href="{% url 'contact' %}"><span class="glyphicon glyphicon-pencil"></span></a></p></th>
+            </tr>
+        </table>
+        <table title="Greiðslu upplýsingar" class="table well">
+            <tr>
+                <th>Nafn korthafa</th>
+                <th>Kortanúmer</th>
+                <th>Gildistími</th>
+                <th>CVC</th>
+            </tr>
+            <tr>
+                <td>{{ payment_step.cardholder_name }}</td>
+                <td>{{ payment_step.card_number|stringformat:"d" }}</td>
+                <td>{{ payment_step.expiration_date|stringformat:"04d" }}</td>
+                <td>{{ payment_step.cvc }}</td>
+            </tr>
+            <tr>
+                <th><p>Breyta greiðslu upplýsingum    <a class="cart-edit" href="{% url 'payment' %}"><span class="glyphicon glyphicon-pencil"></span></a></p></th>
+            </tr>
+        </table>
+        <table class="table cart-footer">
+            <tr>
+                <td><a class="cart-next" href="{% url 'payment' %}"><span class="glyphicon glyphicon-menu-left"></span></a></td>
+                <td><a class="cart-next" href="{% url 'confirmation' %}"><span class="glyphicon glyphicon-send"></span></a></td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}

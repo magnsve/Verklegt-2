@@ -9,12 +9,15 @@
         <div class="well">
             <h1 class="red">Tengiliða upplýsingar</h1>
         </div>
-        <div class="well">
-            <a class="cart-sidelinks" href="{% url 'product-index' %}">Aftur í verslun</a>
-            <a class="cart-sidelinks" href="{% url 'cart-index' %}">Aftur í körfu</a>
-            <a class="cart-sidelinks" href="{% url 'payment' %}">Greiðslupplýsingar</a>
-            <a class="cart-sidelinks" href="{% url 'review' %}">Yfirferð</a>
-        </div>
+        <table class="table">
+            <tr>
+                <th><a class="cart-sidelinks" href="{% url 'product-index' %}">Verslun</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'cart-index' %}">Karfa</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'contact' %}">Tengiliður</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'payment' %}">Greiðsla</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'review' %}">Yfirfara</a></th>
+            </tr>
+        </table>
         <div class="well">
             <form class="form form-horizontal" action="{% url 'contact' %}" method="post">
                 {% csrf_token %}
@@ -23,11 +26,12 @@
             </form>
         </div>
 
-        <div class="well">
-            <a class="cart-next" href="{% url 'cart-index' %}">Aftur í körfu</a>
-            <a class="cart-next" href="{% url 'payment' %}">Greiðslupplýsingar</a>
-        </div>
-
+        <table class="table cart-footer">
+            <tr>
+                <td><a class="cart-next" href="{% url 'cart-index' %}"><span class="glyphicon glyphicon-menu-left"></span></a></td>
+                <td><a class="cart-next" href="{% url 'payment' %}"><span class="glyphicon glyphicon-menu-right"></span></a></td>
+            </tr>
+        </table>
     </div>
 
 {% endblock %}
