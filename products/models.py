@@ -20,7 +20,7 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=9999, blank=True)
     category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=0)
     on_sale = models.BooleanField()
     manufacturer = models.ForeignKey(ProductManufacturer, on_delete=models.CASCADE)
 

@@ -1,7 +1,8 @@
-<div class="well product">
-    <a href="/products/{{ product.id }}">
+<div class="product_box">
+    <a class="single_product" href="/products/{{ product.id }}">
         <img class="product-img" src="{{ product.productimage_set.first.image }}"/>
-        <h4>{{ product.name }}</h4>
-        <p>{{ product.description }}</p>
+        <h4 class="product-name">{{ product.name }}</h4>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">{{ product.price }} kr</p>
     </a>
 </div>

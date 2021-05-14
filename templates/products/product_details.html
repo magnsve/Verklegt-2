@@ -4,15 +4,23 @@
     <a href="/{{ id }}">{{ product.name }}</a>
 {% endblock %}
 {% block content %}
-    <h1>{{ product.name}}</h1>
-    <p>Flokkur: {{ product.category }}</p>
-    <p>{{ product.description }}</p>
-    <p>{{ product.price }} kr.</p>
-    <p>Framleiðandi: {{ product.manufacturer.name }}</p>
-    {% for product_image in product.productimage_set.all %}
-        <img src="{{ product_image.image }}" class="product-img"/>
-    {% endfor %}
-    {% if user.is_authenticated %}
-        <a href="/cart/add/{{ product.id }}" class="block btn btn-primary">Bæta í körfu</a>
-    {% endif %}
+    <div class="product_view">
+        {% for product_image in product.productimage_set.all %}
+            <img src="{{ product_image.image }}" class="product-img"/>
+        {% endfor %}
+        <div class="product_text_button">
+            <div class="product_view_text">
+                <h1 class="product_view_title">{{ product.name}}</h1>
+                <p>{{ product.description }}</p>
+                <p>Framleiðandi: {{ product.manufacturer.name }}</p>
+                <p>Flokkur: {{ product.category }}</p>
+                <p class="product_view_price">{{ product.price }} kr.</p>
+            </div>
+            <div class="ble">
+                {% if user.is_authenticated %}
+                    <a href="/cart/add/{{ product.id }}" class="product_view_button">Bæta í körfu</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock%}
