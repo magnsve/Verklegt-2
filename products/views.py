@@ -7,6 +7,7 @@ from products.models import Product, ProductImage, ProductCategory
 from ship_o_cereal.decorators import admin_required
 from user.models import SearchHistory
 
+
 def index(request):
     categories = ProductCategory.objects.all().order_by('name')
     filter_by = request.GET.get('category', 'all')
