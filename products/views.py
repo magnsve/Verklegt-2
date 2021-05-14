@@ -7,7 +7,7 @@ from products.models import Product, ProductImage, ProductCategory
 from ship_o_cereal.decorators import admin_required
 from user.models import SearchHistory
 
-
+#Index for search and search history
 def index(request):
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
@@ -58,6 +58,7 @@ def get_product_by_id(request, id):
     })
 
 
+#Create new product
 @login_required
 @admin_required
 def create_product(request):

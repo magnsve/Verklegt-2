@@ -12,6 +12,7 @@ def index(request):
     return render(request, 'user/index.html')
 
 
+#Create user
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
@@ -27,6 +28,7 @@ def logout_redirect(request):
     return render(request, 'user/logout_redirect.html')
 
 
+#User profile with search history
 def profile(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':

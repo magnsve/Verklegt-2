@@ -34,7 +34,7 @@ def administrate_users(request):
     context = {'profiles': Profile.objects.exclude(id=request.user.profile.id)}
     return render(request, 'administrate/administrate_users.html', context)
 
-
+#Make user an admin
 @login_required
 @admin_required
 def toggle_admin(request, id):
@@ -43,7 +43,7 @@ def toggle_admin(request, id):
     profile.save()
     return redirect('administrate_users')
 
-
+#View for manufacturers of items for sale
 @login_required
 @admin_required
 def administrate_manufacturers(request):
@@ -72,7 +72,7 @@ def get_product_by_id(request, id):
         'product': get_object_or_404(Product, pk=id)
     })
 
-
+#Creating a new product from the website
 @login_required
 @admin_required
 def create_product(request):
@@ -97,7 +97,7 @@ def delete_product(request, id):
     product.delete()
     return redirect('products_products')
 
-
+#Update product to change information, price etc.
 @login_required
 @admin_required
 def update_product(request, id):
@@ -114,7 +114,7 @@ def update_product(request, id):
         'id': id
     })
 
-
+#Create new manufacturer
 @login_required
 @admin_required
 def create_manufacturer(request):
@@ -129,7 +129,7 @@ def create_manufacturer(request):
         'form': form
     })
 
-
+#Update manufacturer to change information
 @login_required
 @admin_required
 def update_manufacturer(request, id):
@@ -154,7 +154,7 @@ def delete_manufacturer(request, id):
     manufacturer.delete()
     return redirect('products_manufacturers')
 
-
+#Create a new category of product
 @login_required
 @admin_required
 def create_category(request):
@@ -194,7 +194,7 @@ def delete_category(request, id):
     category.delete()
     return redirect('products_categories')
 
-
+#Update product, for example mark it's on sale or change information
 @login_required
 @admin_required
 def update_product(request, id):

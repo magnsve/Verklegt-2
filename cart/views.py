@@ -4,7 +4,7 @@ from cart.forms.cart_form import CartAddressUpdateForm, CartPaymentUpdateForm
 from cart.models import Cart, CartAddress, CartItems, CartPayment
 from products.models import Product
 
-
+#Feature to increase quantity when looking at cart
 @login_required
 def increase_by_one(request, id):
     item = get_object_or_404(CartItems, pk=id)
@@ -14,7 +14,7 @@ def increase_by_one(request, id):
     print(item.quantity)
     return redirect('cart-index')
 
-
+#Feature to decrease quantity when looking at cart, going to 0 removes item from cart
 @login_required
 def decrease_by_one(request, id):
     item = get_object_or_404(CartItems, pk=id)
@@ -25,7 +25,7 @@ def decrease_by_one(request, id):
         item.save()
     return redirect('cart-index')
 
-
+#Index for Cart
 @login_required
 def index(request):
     cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()
@@ -48,7 +48,7 @@ def index(request):
         'total': total
     }
     return render(request, 'cart/index.html', context)
-
+#Adding items to cart from product page
 @login_required
 def add_to_cart(request, id):
     cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()

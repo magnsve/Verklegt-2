@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#URLS that the cart and payment process uses
 urlpatterns = [
     path('', views.index, name='cart-index'),
     path('contact', views.contact, name="contact"),
