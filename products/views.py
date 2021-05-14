@@ -14,7 +14,7 @@ def index(request):
         products = [ {
             'id': x.id,
             'name': x.name,
-            'description': x.description,
+            'price': x.price,
             'firstImage': x.productimage_set.first().image
         } for x in Product.objects.filter(name__icontains=search_filter)]
         if request.user.is_authenticated:

@@ -4,7 +4,7 @@ from django.db import models
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.CharField(max_length=9999)
+    name = models.CharField(max_length=9999)
     profile_image = models.CharField(max_length=9999)
     admin = models.BooleanField(default=False)
 

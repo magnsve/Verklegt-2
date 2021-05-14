@@ -1,5 +1,5 @@
 {% load l10n %}
 <td>{{ item.product_name }}</td>
 <td>{{ item.quantity }}</td>
-<td><a href="{% url 'increase-by-one' item.id %}">+</a> / <a href="{% url 'decrease-by-one' item.id %}">-</a></td>
+<td><a href="{% url 'increase-by-one' item.id %}"><span class="glyphicon glyphicon-plus"></span></a> / <a href="{% url 'decrease-by-one' item.id %}">-</a></td>
 <td>{{ item.total_price|localize }} kr.</td>

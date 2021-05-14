@@ -1,8 +1,50 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form method="post" class="form form-horizontal">
+    {% load static %}
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+<script src="{% static 'js/Login.js' %}"></script>
+
+<div class="form-wrap">
+		<div class="tabs">
+			<h3 class="signup-tab"><a class="active" href="#signup-tab-content">Login</a></h3>
+
+		</div><!--.tabs-->
+
+		<div class="tabs-content">
+			<div id="signup-tab-content" class="active">
+				<form class="signup-form" action="" method="post">
+
+                    <form class="form form-horizontal" method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" class="btn btn-primary" value="Skrá mig inn"/>
+        <input type="submit" class="btn btn-primary" value="Skrá mig inn" />
     </form>
+
+				</form><!--.login-form-->
+				<div class="help-text">
+				</div><!--.help-text-->
+			</div><!--.signup-tab-content-->
+
+			<div id="login-tab-content">
+
+
+                    {% include 'user/search_history.html' %}
+
+
+			</div><!--.login-tab-content-->
+		</div><!--.tabs-content-->
+	</div><!--.form-wrap-->
+
+
+
+
+
+
+
+
+
 {% endblock %}

@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
-.products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 1% 25% 25%;
-    padding: 0;
-    color: cadetblue;
-}
-
 .footer {
     left: 0;
     bottom: 0;
@@ -20,13 +10,26 @@
     padding-right: 5rem;
 }
 
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    color: cadetblue;
+    padding-left: 220px;
+    right: 0;
+    flex: 4 3 auto;
+    padding-bottom: 100px;
+}
+
 .product_box{
     display: flex;
     border: 20px;
-    padding: 20px;
+    padding: 30px;
     width: 350px;
     height: 350px;
     object-fit: cover;
+    margin: 10px;
 }
 
 .product_view{
@@ -35,6 +38,14 @@
     border: 20px;
     width: 400px;
     height: 400px;
+    padding: 40px;
+}
+
+.product-imgage{
+    width: 100%;
+    height: 100%;
+    border-top: 20px solid white;
+    border-bottom: 20px solid white;
 }
 
 .product-img{
@@ -42,6 +53,10 @@
     height: 100%;
     border-top: 20px solid white;
     border-bottom: 20px solid white;
+}
+
+.product-img:hover{
+    opacity: 0.3;
 }
 
 .product_view_title{
@@ -62,12 +77,24 @@
 }
 
 .product_text_button{
-    padding: 0 25% 25%;
-    width: 300px;
+    padding: 30px;
+    width: 600px;
+}
+
+.add_to_cart_button{
+    margin-top: 50px;
+}
+
+.add_to_cart_button:hover{
+    background-color: burlywood;
+    border: 1px grey;
+    text-decoration: none;
+    color: white;
 }
 
 .product_view_price{
     color: red;
+    margin-top: 30px;
 }
 
 .product_view_button{
@@ -76,12 +103,12 @@
     background-color: lightgoldenrodyellow;
     color: black;
     border: 1px black;
-    margin-top: 5rem;
+    margin-top: 60px;
     padding: 1rem 2rem;
     font-family: sans-serif;
     cursor: pointer;
     border-radius: 10px;
-    width: 100%;
+    width: 70px;
 }
 
 .product-view-button:hover{
@@ -107,8 +134,9 @@
 }
 
 .product-price{
-    color: darkgray;
-    font-size: 12px;
+    color: darkred;
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
 
 /*Other buttons*/
@@ -124,15 +152,47 @@
     border-left: 1px solid #CCC;
 }
 
-.filter_by_category{
+.sidenav{
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    padding-top: 0px;
+    padding-right: 50px;
+    padding-left: 20px;
+    height: 75%;
+    width: 250px;
+    position: absolute;
     left: 0;
+    border-right: 1px solid black;
+    margin-right: 0;
+    margin-top: 100px
 }
 
+.sidenav a{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #333333;
+    display: block;
+    line-height: 40px;
+    white-space: nowrap;
+}
+
+.sidenav a:hover{
+    color: red;
+    text-decoration: none;
+}
+
+.sidenav-title{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 70px;
+}
 
 .breadcrumbs{
-    padding: 16px 63px;
+    padding: 16px 20px;
     list-style: none;
     color: black;
 }
@@ -240,21 +300,24 @@
 
 /*Headline on product page*/
 .header_product_page{
-    background-color: lightgrey;
+    background-color: white;
     width: 100%;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 10px;
     font-weight: bold;
     padding: 10px;
+    border-bottom: 1px solid black;
 }
 
 .dropdown{
     position: relative;
     display: inline-block;
-    padding: 50px 200px;;
+    padding-left: 50px;
+    padding-right: 80px;
     width: 100%;
     text-align: right;
+    background-color: white;
 }
 
 .dropdown-content{
@@ -264,12 +327,11 @@
     min-width: 160px;
     z-index: 1;
     right: 0;
-    margin-right: 200px;
+    margin-right: 80px;
     border: 1px solid black;
 }
 
 .drop-button{
-    background-color: white;
     font-size: 14px;
     padding-left: 15px;
     padding-right: 15px;
@@ -281,11 +343,11 @@
     display: block;
     text-align: left;
     border: white;
+    background-color: white;
 }
 
 .dropdown-content a:hover {
-    background-color: white;
-    text-decoration: none;
+    color: blue;
 }
 
 .dropdown:hover .dropdown-content {
@@ -294,8 +356,22 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .drop-button {
-    background-color: darkgray;
-    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+
+.arrow{
+    border: solid #8c8c8c;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 5px;
+    margin-bottom: 1.5px;
+}
+
+.down{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
 
 .footer-dark .copyright {
