@@ -2,19 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name="cart-index"),
+    path('', views.index, name='cart-index'),
     path('contact', views.contact, name="contact"),
-
+    path('add/<int:id>', views.add_to_cart, name='add-to-cart'),
+    path('increase_by_one/<int:id>', views.increase_by_one, name='increase-by-one'),
+    path('decrease_by_one/<int:id>', views.decrease_by_one, name='decrease-by-one'),
 ]
-
-'''
-
-    path('add/<int:id>/', views.cart_add, name='cart_add'),
-    path('item_clear/<int:id>/', views.item_clear, name='item_clear'),
-    path('item_increment/<int:id>/',
-         views.item_increment, name='item_increment'),
-    path('item_decrement/<int:id>/',
-         views.item_decrement, name='item_decrement'),
-    path('cart_clear/', views.cart_clear, name='cart_clear'),
-    path('cart-detail/',views.cart_detail,name='cart_detail'),
-    '''
