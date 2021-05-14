@@ -6,8 +6,7 @@
 {% block content %}
     <h1 class="header_product_page">Vöruúrvalið</h1>
         <div class="dropdown">
-            <h4>Raða eftir</h4>
-            <button class="drop-button">Vörur</button>
+            <button class="drop-button">Raða vörum eftir</button>
             <div class="dropdown-content">
                 <a class="filter-button" id="alphabetical" href="{% url 'product-webstore' %}?sort=name">Stafrófsröð</a>
                 <a class="filter-button" id="reverse-alphabeticla" href="{% url 'product-webstore' %}?sort=-name">Öfugri stafrófsröð</a>
@@ -23,15 +22,18 @@
             <a class="filter-button" id="{{ category.id }}" href="{% url 'product-webstore' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
     </div>
-    <div class="input-group">
+
+    <!--<div class="input-group">
         <input type="search" class="form-control" id="search-box" placeholder="Hverju vilt þú leita að?"/>
         <div class="input-group-btn">
             <button type="button" id="search-btn" class="btn btn-default">Leita</button>
         </div>
     </div>
-    {% if user.is_authenticated %}
-        {% include 'user/search_history.html' %}
-    {% endif %}
+    <div class="history_search">
+        {% if user.is_authenticated %}
+            {% include 'user/search_history.html' %}
+        {% endif %}
+    </div>-->
     <div class="products">
         {% for product in products %}
             {% include 'products/single_product.html' with product=product %}

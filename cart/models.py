@@ -1,6 +1,8 @@
 from django.db import models
 
-<<<<<<< HEAD
+from products.models import Product
+from user.models import Profile
+
 
 class Cart(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -35,6 +37,4 @@ class CartPayment(models.Model):
     card_number = models.FloatField()
     expiration_date = models.FloatField()
     cvc = models.FloatField()
-=======
-# Create your models here.
->>>>>>> e1b90619c78a4c056cb555d34194b1f25241454e
+
