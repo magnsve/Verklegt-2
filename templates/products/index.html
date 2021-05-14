@@ -1,8 +1,6 @@
-
-{% extends 'products/index1.html' %}
+{% extends 'base.html' %}
 {% block breadcrumbs %}
-    {{ block.super }} &raquo;
-    <a href="index.html">Verslun</a>
+    <a href="/">Heim</a>
 {% endblock %}
 {% block content %}
     <h1 class="red">Vöru úrvalið</h1>
@@ -18,7 +16,7 @@
         <h4 class="red">Skoða vörur eftir vöruflokkum:</h4>
         <a class="filter-button" id="all" href="{% url 'product-index' %}">Allir vöruflokkar</a>
         {% for category in categories %}
-            <a class="sidenav-content2" id="{{ category.id }}" href="{% url 'product-webstore' %}?category={{ category.id }}">{{ category.name}}</a>
+            <a class="filter-button" id="{{ category.id }}" href="{% url 'product-index' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
     </div>
     {% if user.is_authenticated %}
