@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c017933-fa7a-4c03-8ff4-51e1dc8a82f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main1.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navigation2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navigation2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +34,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="stebbi_dev" />
-                    <option name="lastUsedInstant" value="1620240541" />
+                    <option name="lastUsedInstant" value="1620848633" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -124,6 +116,7 @@
       <workItem from="1620363259813" duration="703000" />
       <workItem from="1620593472661" duration="115000" />
       <workItem from="1620593826322" duration="37814000" />
+      <workItem from="1620953956042" duration="367000" />
     </task>
     <servers />
   </component>
