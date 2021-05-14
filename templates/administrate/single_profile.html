@@ -4,7 +4,7 @@
     <p>Profile id: {{ profile.id }}</p>
     <p>User id: {{ profile.user.id }}</p>
     <p>Nafn: {{ profile.name }}</p>
-        <a href="{% url 'toggle_admin' profile.id %}">
+        <a class="product_view_button" href="{% url 'toggle_admin' profile.id %}">
             {% if profile.admin %}
                 Fjarlægja admin réttindi
             {% else %}

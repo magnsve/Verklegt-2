@@ -43,7 +43,7 @@ def toggle_admin(request, id):
     profile = get_object_or_404(Profile, pk=id)
     profile.admin = not profile.admin
     profile.save()
-    return redirect('administrate_users')
+    return redirect('administrate-index')
 
 #View for manufacturers of items for sale
 @login_required
