@@ -32,10 +32,6 @@ def index(request):
     if not cart:
         cart = Cart(profile_id=request.user.profile.id)
         cart.save()
-        address = CartAddress(cart_id=cart.id, country_id=16)
-        address.save()
-        payment = CartPayment(cart_id=cart.id)
-        payment.save()
     cart_items = CartItems.objects.all().filter(cart_id=cart.id)
     total = 0
     for cart_item in cart_items:
