@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
-.breadcrumbs{
-    padding: 16px 63px;
-    list-style: none;
-    color: black;
-    margin-left: 60px;
-}
-
-.input-group{
-    margin-top: 0;
-}
 .products {
     display: flex;
     justify-content: space-around;
@@ -134,7 +124,7 @@
     border-left: 1px solid #CCC;
 }
 
-.sidenav{
+.filter_by_category{
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -160,9 +150,11 @@
     display: block;
 }
 
-.sidenav a:hover{
-    color: yellow;
-    text-decoration: none;
+
+.breadcrumbs{
+    padding: 16px 63px;
+    list-style: none;
+    color: black;
 }
 
 /*Head image on front page*/
@@ -204,7 +196,7 @@
 .hero-button{
     font-size: 15px;
     font-weight: 200;
-    background-color: #ffffcc;
+    background-color: lightgoldenrodyellow;
     color: black;
     border: 1px black;
     margin-top: 5rem;
@@ -230,7 +222,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px 10px;
 }
 
 .categories{
@@ -240,7 +231,17 @@
     width: 100%;
 }
 
+.categories > div{
+    border-color: black;
+    padding: 16px;
+    background-color: black;
+    margin: 20px;
+    font-size: 30px;
+    width: 100%;
+}
+
 .category-button {
+    border-color: black;
     padding: 5%;
     background-color: burlywood;
     margin: 50px;
@@ -255,7 +256,6 @@
 
 .category-button:hover{
     color: white;
-    text-decoration: none;
 }
 
 /*Headline on product page*/
@@ -272,7 +272,7 @@
 .dropdown{
     position: relative;
     display: inline-block;
-    padding-right: 50px;;
+    padding: 50px 200px;;
     width: 100%;
     text-align: right;
 }
@@ -301,7 +301,6 @@
     display: block;
     text-align: left;
     border: white;
-    background-color: white;
 }
 
 .dropdown-content a:hover {
@@ -313,24 +312,10 @@
     display: block;
 }
 
+/* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .drop-button {
-    background-color: #f2f2f2;
+    background-color: darkgray;
     text-decoration: none;
-}
-
-/* Arrow for dropdown menu */
-.arrow{
-    border: 1px solid #515151;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    margin-left: 10px;
-    margin-bottom: 2px;
-}
-
-.down{
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
 }
 
 .footer-dark .copyright {

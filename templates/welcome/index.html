@@ -9,12 +9,12 @@
             <h2 class="hero-subtitle">
                 Við bjóðum upp á uppáhalds morgunkornið þitt!
             </h2>
-            <a class="hero-button" id="all" href="{% url 'product-webstore' %}?category=all">Velja morgunkorn</a>
+            <a class="hero-button" id="all" href="{% url 'product-index' %}">Velja morgunkorn</a>
         </div>
     </div>
     <div class="categories">
         {% for category in categories %}
-            <a class="category-button" id="{{ forloop.counter }}" href="{% url 'product-webstore' %}?category={{ category.id }}">{{ category.name}}</a>
+            <a class="category-button" id="{{ forloop.counter }}" href="{% url 'product-index' %}?category={{ category.id }}">{{ category.name}}</a>
         {% endfor %}
     </div>
 {% endblock %}

@@ -7,21 +7,8 @@ from products.models import Product, ProductImage, ProductCategory
 from ship_o_cereal.decorators import admin_required
 from user.models import SearchHistory
 
-def index(request):
-    categories = ProductCategory.objects.all().order_by('name')
-    filter_by = request.GET.get('category', 'all')
-    if filter_by == 'all':
-        product_set = Product.objects.all().order_by('name')
-    elif ProductCategory.objects.filter(id=filter_by).exists():
-        product_set = Product.objects.filter(category=filter_by).order_by('name')
-    else:
-        product_set = Product.objects.all().order_by('name')
-    context = {'products': product_set,
-                'categories': categories
-                }
-    return render(request, 'products/index1.html', context=context)
 
-def webstore(request):
+def index(request):
     if 'search_filter' in request.GET:
         search_filter = request.GET['search_filter']
         products = [ {
