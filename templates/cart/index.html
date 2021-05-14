@@ -11,7 +11,7 @@
                 <tr>
                     <th>Vara</th>
                     <th>Fjöldi</th>
-                    <th><span class="glyphicon glyphicon-plus"></span> / -</th>
+                    <th><span class="glyphicon glyphicon-plus"></span> / <span class="glyphicon glyphicon-minus"></th>
                     <th>Verð</th>
                 </tr>
                 {% for item in cart|dictsort:'cart.id' %}
@@ -20,10 +20,10 @@
                     </tr>
                 {% endfor %}
             </table>
-            <div class="cart-next">
+            <div class="cart">
                 <h2>Heildarverð: {{ total|localize }} kr.</h2>
                 {% if cart.all %}
-                    <a class="cart-next" href="{% url 'contact' %}">Áfram í greiðsluferli</a>
+                    <p class="cart-next">Áfram í greiðslu <a class="cart-next" href="{% url 'contact' %}"><span class="glyphicon glyphicon-credit-card"></span></a></p>
                 {% endif %}
             </div>
         </div>

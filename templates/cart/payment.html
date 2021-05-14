@@ -5,12 +5,29 @@
 {% endblock %}
 {% block content %}
     {% load l10n %}
-    <h1 class="well red">Greiðslu upplýsingar</h1>
-    <form class="form form-horizontal" action="{% url 'payment' %}" method="post">
-        {% csrf_token %}
-        {{ form }}
-    <input type="submit" value="Vista" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0"/>
-    </form>
-    <a class="cart-next" href="{% url 'contact' %}">Aftur í tengiliðaupplýsingar</a>
-    <a class="cart-next" href="{% url 'review' %}">Staðfesta</a>
+    <div class="cart">
+        <div class="well">
+            <h1 class="red">Greiðslu upplýsingar</h1>
+        </div>
+        <table class="table">
+            <tr>
+                <th><a class="cart-sidelinks" href="{% url 'product-index' %}">Verslun</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'cart-index' %}">Karfa</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'contact' %}">Tengiliður</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'payment' %}">Greiðsla</a></th>
+                <th><a class="cart-sidelinks" href="{% url 'review' %}">Yfirfara</a></th>
+            </tr>
+        </table>
+        <form class="well form form-horizontal" action="{% url 'payment' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+        <input type="submit" value="Vista" class="btn btn-primary pull-right" style="clear: both; margin: 10px 0"/>
+        </form>
+        <table class="table cart-footer">
+            <tr>
+                <td><a class="cart-next" href="{% url 'contact' %}"><span class="glyphicon glyphicon-menu-left"></span></a></td>
+                <td><a class="cart-next" href="{% url 'review' %}"><span class="glyphicon glyphicon-menu-right"></span></a></td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}

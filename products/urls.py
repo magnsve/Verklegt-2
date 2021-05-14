@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#all URLS used by product
 urlpatterns = [
     path('', views.index, name="product-index"),
     path('<int:id>', views.get_product_by_id, name="product_details"),

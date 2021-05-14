@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+#URLS used by administration functionalities for the site
 urlpatterns = [
     path('', views.index, name="administrate-index"),
     path('users', views.administrate_users, name='administrate_users'),
