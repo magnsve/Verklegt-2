@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from cart.forms.cart_form import CartAddressForm, CartItemsUpdateForm
-from cart.models import Cart, CartAddress, CartItems
+from cart.forms.cart_form import CartAddressUpdateForm, CartPaymentUpdateForm
+from cart.models import Cart, CartAddress, CartItems, CartPayment
 from products.models import Product
 
 
@@ -32,6 +32,10 @@ def index(request):
     if not cart:
         cart = Cart(profile_id=request.user.profile.id)
         cart.save()
+        address = CartAddress(cart_id=cart.id)
+        address.save()
+        payment = CartPayment(cart_id=cart.id)
+        payment.save()
     cart_items = CartItems.objects.all().filter(cart_id=cart.id)
     total = 0
     for cart_item in cart_items:
@@ -66,8 +70,70 @@ def add_to_cart(request, id):
 
 @login_required
 def contact(request):
-    profile_id = request.user.profile.id
-    cart = Cart.objects.filter(profile_id=profile_id).filter(is_open=True)
-    contact_info = CartAddress.objects.filter(cart_id=cart.id)
-    form = CartAddressForm(data=request.POST)
-    return render(request, 'cart/index.html')
+    cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()
+    try:
+        instance = CartAddress.objects.all().filter(cart_id=cart.id).first()
+        if request.method == 'POST':
+            form = CartAddressUpdateForm(data=request.POST, instance=instance)
+            if form.is_valid():
+                form.save()
+                return redirect('contact')
+        else:
+            form = CartAddressUpdateForm(instance=instance)
+    except:
+        if request.method == 'POST':
+            form = CartAddressUpdateForm(data=request.POST)
+            if form.is_valid():
+                address = form.save(commit=False)
+                address.cart_id = cart.id
+                address.save()
+                return redirect('contact')
+        else:
+            form = CartAddressUpdateForm()
+    return render(request, 'cart/contact.html', {'form': form})
+
+
+@login_required
+def payment(request):
+    cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()
+    try:
+        instance = CartPayment.objects.all().filter(cart_id=cart.id).first()
+        if not instance:
+            raise Exception
+        if request.method == 'POST':
+            form = CartPaymentUpdateForm(data=request.POST, instance=instance)
+            if form.is_valid():
+                form.save()
+                return redirect('contact')
+        else:
+            form = CartPaymentUpdateForm(instance=instance)
+    except:
+        if request.method == 'POST':
+            form = CartPaymentUpdateForm(data=request.POST)
+            if form.is_valid():
+                payment_object = form.save(commit=False)
+                payment_object.cart_id = cart.id
+                payment_object.save()
+                return redirect('contact')
+        else:
+            form = CartPaymentUpdateForm()
+    return render(request, 'cart/payment.html', {'form': form})
+
+
+@login_required
+def review(request):
+    cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()
+    payment_step = CartPayment.objects.all().filter(cart_id=cart.id).first()
+    contact_step = CartAddress.objects.all().filter(cart_id=cart.id).first()
+    context = {
+        'payment_step': payment_step,
+        'contact_step': contact_step
+    }
+    return render(request, 'cart/review.html', context)
+
+@login_required
+def confirmation(request):
+    cart = Cart.objects.all().filter(profile_id=request.user.profile.id).filter(is_open=True).first()
+    cart.is_open = False
+    cart.save()
+    return render(request, 'cart/confirmation.html')
