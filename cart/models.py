@@ -3,12 +3,12 @@ from django.db import models
 from products.models import Product
 from user.models import Profile
 
-
+#Main Cart class
 class Cart(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     is_open = models.BooleanField(default=True)
 
-
+#For all items in cart
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -23,7 +23,7 @@ class Country(models.Model):
     def __str__(self):
         return self.country
 
-
+#For payment information step in cart
 class CartAddress(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=255)
@@ -33,7 +33,7 @@ class CartAddress(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
     postal_code = models.CharField(max_length=255)
 
-
+#Information about payment for cart
 class CartPayment(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
