@@ -10,7 +10,9 @@ from user.models import Profile
 @login_required
 @admin_required
 def index(request):
-    return render(request, 'administrate/index.html')
+    context = {'profiles': Profile.objects.exclude(id=request.user.profile.id)}
+    return render(request, 'administrate/index.html', context)
+
 
 
 @login_required

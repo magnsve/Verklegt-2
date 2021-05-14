@@ -1,9 +1,67 @@
 {% extends 'base.html' %}
 {% block breadcrumbs %}
+{% load static %}
     {{ block.super }} &raquo;
     <a href="{% url 'administrate-index' %}">Starfsmanna aðgangur</a>
 {% endblock %}
 {% block content %}
-    <a href="{% url 'administrate_users' %}" class="well administrate">Notenda umsýsla</a>
-    <a href="{% url 'administrate_products' %}" class="well administrate">Vöru umsýsla</a>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+<link rel="stylesheet" href="{% static 'css/administrator.css' %}" />
+
+<script src="{% static 'js/Login.js' %}"></script>
+
+
+
+<div class="form-wrap">
+		<div class="tabs">
+			<h3 class="signup-tab"><a class="active" href="#signup-tab-content">Notenda umsýsla</a></h3>
+            <h3 class="login-tab"><a href="#login-tab-content">Vöru umsýsla</a></h3>
+
+		</div><!--.tabs-->
+
+		<div class="tabs-content">
+			<div id="signup-tab-content" class="active notenda">
+                <div class="profiles">
+                    <h1 class="red">Notenda listi</h1>
+                    {% for profile in profiles|dictsort:'user.username' %}
+                        {% include 'administrate/single_profile.html' with profile=profile %}
+                    {% endfor %}
+            </div>
+    </form>
+
+				</form><!--.login-form-->
+
+			</div><!--.signup-tab-content-->
+
+			<div id="login-tab-content">
+
+    <div class="well"><a href="{% url 'products_products' %}" class="administrate">Vörur</a></div>
+    <div class="well"><a href="{% url 'products_manufacturers' %}" class="administrate">Framleiðendur</a></div>
+    <div class="well"><a href="{% url 'products_categories' %}" class="administrate">Vöruflokkar</a></div>
+
+
+
+			</div><!--.login-tab-content-->
+		</div><!--.tabs-content-->
+	</div><!--.form-wrap-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

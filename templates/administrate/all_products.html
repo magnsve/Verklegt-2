@@ -4,11 +4,16 @@
     <a href="{% url 'products_products' %}">Vörur</a>
 {% endblock %}
 {% block content %}
-    <h1 class="red">Vörur</h1>
+    <div class="well"><h1 class="red">Vörur</h1></div>
+
     <p><a href="{% url 'create_product' %}" class="well administrate">Búa til nýja vöru</a></p>
-    <div class="products">
+    <div class="body">
+    <div class="form-wrap">
         {% for product in products|dictsort:'name' %}
             {% include 'administrate/single_product.html' with product=product %}
         {% endfor %}
     </div>
+    </div>
 {% endblock %}
+
+
