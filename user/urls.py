@@ -2,6 +2,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from . import views
 
+#URLS used for user sites
 urlpatterns = [
     path('', views.index, name="user-index"),
     path('register', views.register, name='register'),

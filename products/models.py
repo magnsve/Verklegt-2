@@ -16,6 +16,7 @@ class ProductManufacturer(models.Model):
         return self.name
 
 
+#main class for products
 class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=9999, blank=True)
