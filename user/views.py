@@ -31,6 +31,10 @@ def logout_redirect(request):
 #User profile with search history
 def profile(request):
     profile = Profile.objects.filter(user=request.user).first()
+    if profile is None:
+        profile = Profile(user_id=request.user.id)
+        profile.save()
+    print(profile)
     if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():

@@ -5,8 +5,8 @@ from django.db import models
 #Main class for user profile
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=9999)
-    profile_image = models.CharField(max_length=9999)
+    name = models.CharField(max_length=9999, blank=True)
+    profile_image = models.CharField(max_length=9999, blank=True)
     admin = models.BooleanField(default=False)
 
 
