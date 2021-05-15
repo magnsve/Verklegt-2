@@ -11,7 +11,9 @@
                 <ul>
                     <li><a href="{% url 'product-index' %}">Verslun<span class="sr-only">(current)</span></a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'administrate-index' %}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span></a></li>
+                        {% if user.profile.is_admin %}
+                            <li><a href="{% url 'administrate-index' %}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-cog"></span></a></li>
+                        {% endif %}
                         <li><a href="{% url 'profile' %}"><img src="{{ user.profile.profile_image }}" class="profile-image" />Mín síða</a></li>
 
                         <li><a href="{% url 'logout' %}">Skrá mig út</a></li>
